@@ -1,0 +1,75 @@
+{
+  "kind": "collectionType",
+  "collectionName": "events",
+  "info": {
+    "singularName": "event",
+    "pluralName": "events",
+    "displayName": "event",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "description": {
+      "type": "text"
+    },
+    "type": {
+      "type": "enumeration",
+      "enum": [
+        "Public",
+        "Private"
+      ]
+    },
+    "occurance": {
+      "type": "string"
+    },
+    "eventUId": {
+      "type": "uid",
+      "required": false
+    },
+    "ownerId": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "plugin::users-permissions.user",
+      "inversedBy": "events"
+    },
+    "eventoccurances": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::eventoccurance.eventoccurance",
+      "mappedBy": "eventId"
+    },
+    "eventreceivers": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::eventreceiver.eventreceiver",
+      "mappedBy": "eventId"
+    },
+    "eventattendees": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::eventattendee.eventattendee",
+      "mappedBy": "eventId"
+    },
+    "eventattendence": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::eventattendence.eventattendence",
+      "mappedBy": "eventId"
+    },
+    "category": {
+      "type": "string"
+    },
+    "eventtags": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::eventtag.eventtag",
+      "mappedBy": "eventId"
+    }
+  }
+}

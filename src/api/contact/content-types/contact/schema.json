@@ -1,0 +1,49 @@
+{
+  "kind": "collectionType",
+  "collectionName": "contacts",
+  "info": {
+    "singularName": "contact",
+    "pluralName": "contacts",
+    "displayName": "Contact",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "email": {
+      "type": "email"
+    },
+    "phone": {
+      "type": "string"
+    },
+    "contactUId": {
+      "type": "uid"
+    },
+    "ownerId": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "plugin::users-permissions.user",
+      "inversedBy": "contacts"
+    },
+    "eventreceivers": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::eventreceiver.eventreceiver",
+      "mappedBy": "contactId"
+    },
+    "eventattendees": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::eventattendee.eventattendee",
+      "mappedBy": "contactId"
+    },
+    "emailStatus": {
+      "type": "string"
+    }
+  }
+}

@@ -1,0 +1,53 @@
+{
+  "kind": "collectionType",
+  "collectionName": "eventattendees",
+  "info": {
+    "singularName": "eventattendee",
+    "pluralName": "eventattendees",
+    "displayName": "Eventattendee",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "eventId": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::event.event",
+      "inversedBy": "eventattendees"
+    },
+    "contactId": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::contact.contact",
+      "inversedBy": "eventattendees"
+    },
+    "eventAttendeeUId": {
+      "type": "uid"
+    },
+    "responseDateTime": {
+      "type": "datetime"
+    },
+    "response": {
+      "type": "enumeration",
+      "enum": [
+        "accepted",
+        "rejected"
+      ]
+    },
+    "eventattendence": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::eventattendence.eventattendence",
+      "mappedBy": "attendeeId"
+    },
+    "attendeeType": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::enentattendeetype.enentattendeetype",
+      "inversedBy": "eventattendee"
+    }
+  }
+}

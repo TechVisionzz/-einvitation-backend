@@ -1,0 +1,31 @@
+{
+  "kind": "collectionType",
+  "collectionName": "eventtags",
+  "info": {
+    "singularName": "eventtag",
+    "pluralName": "eventtags",
+    "displayName": "eventtag",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "eventId": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::event.event",
+      "inversedBy": "eventtags"
+    },
+    "ownerId": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "plugin::users-permissions.user",
+      "inversedBy": "eventtags"
+    }
+  }
+}

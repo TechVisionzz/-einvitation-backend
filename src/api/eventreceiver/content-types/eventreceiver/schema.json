@@ -1,0 +1,37 @@
+{
+  "kind": "collectionType",
+  "collectionName": "eventreceivers",
+  "info": {
+    "singularName": "eventreceiver",
+    "pluralName": "eventreceivers",
+    "displayName": "Eventreceiver",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "eventId": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::event.event",
+      "inversedBy": "eventreceivers"
+    },
+    "contactId": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::contact.contact",
+      "inversedBy": "eventreceivers"
+    },
+    "eventReceiverUId": {
+      "type": "uid"
+    },
+    "ownerId": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "plugin::users-permissions.user",
+      "inversedBy": "eventreceivers"
+    }
+  }
+}

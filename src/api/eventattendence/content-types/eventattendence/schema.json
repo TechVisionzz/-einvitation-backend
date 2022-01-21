@@ -1,0 +1,37 @@
+{
+  "kind": "collectionType",
+  "collectionName": "eventattendences",
+  "info": {
+    "singularName": "eventattendence",
+    "pluralName": "eventattendences",
+    "displayName": "Eventattendence",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "attendeeId": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::eventattendee.eventattendee",
+      "inversedBy": "eventattendence"
+    },
+    "dateTime": {
+      "type": "datetime"
+    },
+    "eventId": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::event.event",
+      "inversedBy": "eventattendence"
+    },
+    "attendedBy": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "plugin::users-permissions.user",
+      "inversedBy": "eventattendences"
+    }
+  }
+}
